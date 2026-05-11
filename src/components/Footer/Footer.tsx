@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.css';
 
-const FOOTER_LINKS = [
-  { label: 'Технологи', href: '#about' },
-  { label: 'Платформ', href: '#tech' },
-  { label: 'Холбоо барих', href: '#contact' },
-];
+// const FOOTER_LINKS = [
+//   { label: 'Технологи', href: '#about' },
+//   { label: 'Платформ', href: '#tech' },
+//   { label: 'Холбоо барих', href: '#contact' },
+// ];
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
