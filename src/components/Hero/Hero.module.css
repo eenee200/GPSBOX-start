@@ -1,0 +1,134 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 80px 80px 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Left column */
+.content {
+  flex: 1;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--color-blue-deep);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eyebrow::before {
+  content: '»';
+  color: var(--color-accent);
+}
+
+.heading {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.04;
+  color: var(--color-text-dark);
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.headingAccent {
+  color: var(--color-blue-vivid);
+  display: block;
+}
+
+.subtext {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+/* CTA */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-blue-vivid);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(34, 85, 204, 0.35);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  width: fit-content;
+  font-family: var(--font-display);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(34, 85, 204, 0.5);
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: var(--color-text-mid);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  backdrop-filter: blur(6px);
+}
+
+/* Right column */
+.visual {
+  flex-shrink: 0;
+  width: 440px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 48px 24px 60px;
+  }
+
+  .visual {
+    width: 100%;
+  }
+}

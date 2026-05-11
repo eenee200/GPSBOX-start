@@ -1,0 +1,202 @@
+/* ── The wrapper is what sticks to the top ── */
+.navbarWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* Full-width row so sticky works — centering is done inside */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 12px 24px;
+  /* Pointer events trick: wrapper is invisible/passthrough,
+     only the pill nav captures clicks */
+  pointer-events: none;
+  /* Smooth transition when scrolled class is added */
+  transition: padding 0.3s ease;
+}
+
+/* Tighten the top gap slightly after scrolling */
+.navbarWrapper.scrolled {
+  padding: 0px 24px;
+}
+
+/* ── The floating pill ── */
+.navbar {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 58px;
+  width: 100%;
+  max-width: 1080px;           /* wider than before */
+  background: linear-gradient(90deg, #1a3a8fee, #2a5ad0ee);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 8px 32px rgba(34, 85, 204, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+}
+
+.navbarWrapper.scrolled .navbar {
+  height: 52px;
+  background: linear-gradient(90deg, #1a3a8ff5, #2a5ad0f5);
+  box-shadow:
+    0 12px 40px rgba(34, 85, 204, 0.38),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ── GPSBOX logo — white pill ── */
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 5px 18px;
+  height: 44px;
+  transition: opacity var(--transition-base), height 0.3s ease;
+}
+
+.navbarWrapper.scrolled .logoLink {
+  height: 38px;
+}
+
+.logoLink:hover {
+  opacity: 0.88;
+}
+
+.logoImg {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Nav Links ── */
+.links {
+  display: flex;
+  gap: 40px;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-base);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 2px;
+  transition: width var(--transition-base);
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* ── TT Tools logo — white pill ── */
+.actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ttLogoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 5px 16px;
+  height: 44px;
+  transition: opacity var(--transition-base), height 0.3s ease;
+}
+
+.navbarWrapper.scrolled .ttLogoLink {
+  height: 38px;
+}
+
+.ttLogoLink:hover {
+  opacity: 0.88;
+}
+
+.ttLogoImg {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .navbarWrapper {
+    padding: 10px 12px;
+  }
+
+  .navbarWrapper.scrolled {
+    padding: 7px 12px;
+  }
+
+  .navbar {
+    height: 50px;
+    padding: 0 6px;
+  }
+
+  .navbarWrapper.scrolled .navbar {
+    height: 46px;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .logoLink,
+  .navbarWrapper.scrolled .logoLink {
+    height: 36px;
+    padding: 4px 12px;
+  }
+
+  .logoImg {
+    height: 20px;
+  }
+
+  .ttLogoLink,
+  .navbarWrapper.scrolled .ttLogoLink {
+    height: 36px;
+    padding: 4px 10px;
+  }
+
+  .ttLogoImg {
+    height: 20px;
+  }
+}
+
+/* Nav items are <button> elements — reset button styles */
+.link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+}
